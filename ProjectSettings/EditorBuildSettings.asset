@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: d4612152c6b5fe4468fa93e0029f66a6
   - enabled: 1
+    path: Assets/Scenes/DifficultyMenu.unity
+    guid: 6092679b3f64c6a42a44d493fc632081
+  - enabled: 1
     path: Assets/Scenes/Caveman.unity
     guid: 4ca3b4c510b72a64cbc51e58121f38f0
   - enabled: 1
