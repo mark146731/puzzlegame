@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpStick : MonoBehaviour
+public class PickUpCrate : MonoBehaviour
 {
     public GameObject Stick;
     public GameObject PickUpText;
@@ -44,10 +44,6 @@ public class PickUpStick : MonoBehaviour
     bool hasBeenUsed;
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == null)
-        {
-            DropText.SetActive(false);
-        }
         if (other.gameObject.tag == "Player")
         {
             if (hasBeenUsed == true)
@@ -65,7 +61,6 @@ public class PickUpStick : MonoBehaviour
                 EquipRock();
             }
         }
-
     }
     private void OnTriggerEnter(Collider other)
     {
