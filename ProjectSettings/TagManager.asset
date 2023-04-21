@@ -10,6 +10,8 @@ TagManager:
   - RockKey
   - StickKey
   - Potion
+  - CrateKey
+  - LampKey
   layers:
   - Default
   - TransparentFX

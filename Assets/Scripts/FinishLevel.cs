@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class FinishLevel : MonoBehaviour
 {
-    public GameObject Stick;
+    public GameObject Crate;
     public GameObject Rock;
+    public GameObject Lamp;
     public GameObject DropText;
     public GameObject PickUpText;
 
@@ -18,7 +19,7 @@ public class FinishLevel : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "StickKey")
+        if (other.gameObject.tag == "CrateKey")
         {
             Destroy(other.gameObject);
             Destroy(DropText);
@@ -27,18 +28,20 @@ public class FinishLevel : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(DropText);
-
+        }
+        else if (other.gameObject.tag == "LampKey")
+        {
+            Destroy(other.gameObject);
+            Destroy(DropText);
         }
     }
     void Update()
     {
-        if(Stick == null && Rock == null)
+        if(Crate == null && Rock == null && Lamp == null)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-
-
     private void OnTriggerExit(Collider other)
     {
         Instantiate(DropText);

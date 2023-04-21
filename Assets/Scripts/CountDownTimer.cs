@@ -13,7 +13,7 @@ public class CountDownTimer : MonoBehaviour
     float currentTime = 0f;
     public bool playerStarted = false;
     float startingTime;
-    public string temp = DifficultyLevel.getDifficultLevel();
+    private static string temp = DifficultyLevel.getDifficultLevel();
     
     [SerializeField] TMP_Text countdownText;
 
