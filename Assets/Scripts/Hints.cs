@@ -6,12 +6,16 @@ public class Hints : MonoBehaviour
 {
 
     public GameObject HintFirstLevel;
+    public GameObject SecondHintFirstLevel;
+    public GameObject ThridHintFirstLevel;
+
     //public GameObject Player;
     public GameObject MaxHints;
     public GameObject keyImage1;
     public GameObject keyImage2;
     public GameObject keyImage3;
 
+    private int counter = 0;
  
 
 
@@ -27,14 +31,20 @@ public class Hints : MonoBehaviour
     {
         currentTime = startTime;
         HintFirstLevel.SetActive(false);
+        SecondHintFirstLevel.SetActive(false);
+        ThridHintFirstLevel.SetActive(false);
+
         MaxHints.SetActive(false);
     }
     void Update()
     {
         currentTime -= 1 * Time.deltaTime;
+        
         if (currentTime < 0)
         {
             HintFirstLevel.SetActive(false);
+            SecondHintFirstLevel.SetActive(false);
+            restart();
             MaxHints.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.H))
@@ -44,29 +54,33 @@ public class Hints : MonoBehaviour
                 MaxHints.SetActive(true);
                 restart();
             }
-            else
+            else 
             {
                 HintFirstLevel.SetActive(true);
-                hasBeenUsedOnLevel = true;
                 restart();
+                hasBeenUsedOnLevel |= true;
                 keyImage3.SetActive(false);
+                counter = 1;
             }
+         
+
         }
     }
-    /*
-    private void onTriggerEnter(Collision other)
+
+    public void FirstHint()
     {
-        if(other.gameObject.tag == "Rock)
-            {
-                
-            }
-        if(other.gameObject.tag == "Stick")
-        {
+        HintFirstLevel.SetActive(true);
+        keyImage3.SetActive(false);
 
-        }
     }
-    */
+    public void SecondHint()
+    {
 
+    }
+    public void ThridHint()
+    {
+       
+    }
 
     public void restart()
     {
