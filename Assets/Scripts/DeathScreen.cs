@@ -3,9 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
-  public void RestartGame ()
+    int temp;
+    public void Start()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        temp = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public void RestartGame ()
+    {
+        SceneManager.LoadScene(temp);
     }
 
   public void ReturnMenu ()
