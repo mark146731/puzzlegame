@@ -8,31 +8,47 @@ public class FinishLevel : MonoBehaviour
     public GameObject Crate;
     public GameObject Rock;
     public GameObject Lamp;
-    public GameObject DropText;
+    
+    public  GameObject DropText;
     public GameObject PickUpText;
 
-    public bool text;
+    public bool keyCrate;
+    public bool keyRock;
+    public bool keyLamp;
+
+    // i want to randomize the order in which the boxes are placd. The hint must match the randomized order
 
 
    //if the object has been picked up check if DropText has been deleted and if so, then instantiate the object again. 
     
-    
+    public bool getkeyCrate()
+    {
+        return keyCrate;
+    }
+    public bool getKeyRock()
+    {
+        return keyRock;
+    }
+    public bool getKeyLamp()
+    {
+        return keyLamp;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "CrateKey")
         {
             Destroy(other.gameObject);
-            Destroy(DropText);
+            this.keyCrate = true;
         }
         else if (other.gameObject.tag == "RockKey")
         {
             Destroy(other.gameObject);
-            Destroy(DropText);
+            this.keyRock = true;
         }
         else if (other.gameObject.tag == "LampKey")
         {
             Destroy(other.gameObject);
-            Destroy(DropText);
+            this.keyLamp = true;
         }
     }
     void Update()
@@ -44,7 +60,7 @@ public class FinishLevel : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Instantiate(DropText);
+        Instantiate(DropText);       
     }
 
 }

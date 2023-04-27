@@ -12,6 +12,9 @@ TagManager:
   - Potion
   - CrateKey
   - LampKey
+  - Solution1
+  - Solution2
+  - Solution3
   layers:
   - Default
   - TransparentFX

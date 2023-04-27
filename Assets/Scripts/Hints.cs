@@ -1,55 +1,95 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class Hints : MonoBehaviour
 {
-
-    public GameObject HintFirstLevel;
-    public GameObject SecondHintFirstLevel;
-    public GameObject ThridHintFirstLevel;
-
     //public GameObject Player;
     public GameObject MaxHints;
+    
     public GameObject keyImage1;
     public GameObject keyImage2;
     public GameObject keyImage3;
 
+    
+    
+    public TMP_Text hintText;
+
     private int counter = 0;
- 
+
+    public ArrayList  buttonPressNum;
+    private string[] hints = { "Look for a rock in the hut and place where there is light", "Look for a magic lamp near a rock", "Carry a box to victory to win","" };
 
 
+    public float hintDuration = 5f;
+
+    // Define the number of hints that have been displayed so far
+    private int hintCount = 0;
+
+
+    //the user presess H and the first hint appears. The text appears for 5 seconds and the key image gets deleted
+    // the user presses H again and the 2nd hint appears. The same thing happens
+    //the user presses H and the 3rd hint appears
+    //the user presses H and the max hints appears
 
     private bool hasBeenUsedOnLevel = false;
 
     float startTime = 3f;
     float currentTime = 0f;
 
+    private bool test;
 
 
     void Start()
     {
-        currentTime = startTime;
-        HintFirstLevel.SetActive(false);
-        SecondHintFirstLevel.SetActive(false);
-        ThridHintFirstLevel.SetActive(false);
+        // Initialize the button press count ArrayList
 
-        MaxHints.SetActive(false);
+        currentTime = startTime;
+        //make the text inactive for all the hints
+        //HintFirstLevel.SetActive(false);
+        //SecondHintFirstLevel.SetActive(false);
+        //ThridHintFirstLevel.SetActive(false);
+        //MaxHints.SetActive(false);
     }
     void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
-        
-        if (currentTime < 0)
-        {
-            HintFirstLevel.SetActive(false);
-            SecondHintFirstLevel.SetActive(false);
-            restart();
-            MaxHints.SetActive(false);
-        }
+     
+        //when the user presses H
         if (Input.GetKeyDown(KeyCode.H))
         {
-            if(hasBeenUsedOnLevel)
+            hintText.enabled = true;
+            if (hintCount < hints.Length)
+            {
+                hintText.text = hints[hintCount];
+                hintCount++;
+            }
+            if(hintCount == 1)
+            {
+                keyImage3.SetActive(false);
+            }
+            if (hintCount == 2)
+            {
+                keyImage2.SetActive(false);
+            }
+            if (hintCount == 3)
+            {
+                keyImage1.SetActive(false);
+            }
+            if(hintCount == 4)
+            {
+                hintText.text = "Maximum Hints Reached";
+            }
+            
+            StartCoroutine(HideHintText());
+            if (test)
+            {
+                // If all hints have been displayed, show the final text
+                hintText.text = "You have reached the end of the hints!";
+            }
+            /*
+            if (hasBeenUsedOnLevel)
             {
                 MaxHints.SetActive(true);
                 restart();
@@ -62,26 +102,19 @@ public class Hints : MonoBehaviour
                 keyImage3.SetActive(false);
                 counter = 1;
             }
-         
+            */
+
 
         }
     }
-
-    public void FirstHint()
+    IEnumerator HideHintText()
     {
-        HintFirstLevel.SetActive(true);
-        keyImage3.SetActive(false);
+        // Wait for the specified duration
+        yield return new WaitForSeconds(hintDuration);
 
+        // Hide the hint text
+        hintText.enabled = false;
     }
-    public void SecondHint()
-    {
-
-    }
-    public void ThridHint()
-    {
-       
-    }
-
     public void restart()
     {
         currentTime = startTime;

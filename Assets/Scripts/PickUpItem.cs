@@ -9,13 +9,24 @@ public class PickUpItem : MonoBehaviour
     public GameObject DropText;
     public Transform RockParent;
 
+    private SphereCollider sphereCollider;
+    public Transform myChildObject;
+
     void Start()
     {
         Rock.GetComponent<Rigidbody>().isKinematic = true;
         PickUpText.SetActive(false);
         DropText.SetActive(false);
+        sphereCollider = GetComponent<SphereCollider>();
+
     }
-    void Update()
+    public void ResizeCollider(float x)
+    {
+        float temp = x;
+        // Set the new size of the BoxCollider
+        sphereCollider.radius = temp;
+    }
+    private void Update()
     {
         if (Input.GetKey(KeyCode.F))
         {
@@ -23,15 +34,19 @@ public class PickUpItem : MonoBehaviour
             Drop();
         }
     }
-    void Drop()
+    private void Drop()
     {
-        RockParent.DetachChildren();
+        myChildObject.parent = null;
         Rock.transform.eulerAngles = new Vector3(Rock.transform.position.x, Rock.transform.position.z, Rock.transform.position.y);
         Rock.GetComponent<Rigidbody>().isKinematic = false;
         Rock.GetComponent<MeshCollider>().enabled = true;
+        ResizeCollider(4f);
+
     }
-    void EquipRock()
+    private void EquipRock()
     {
+        ResizeCollider(1f);
+
         Rock.GetComponent<Rigidbody>().isKinematic = true;
         Rock.transform.position = RockParent.transform.position;
         Rock.transform.rotation = RockParent.transform.rotation;
