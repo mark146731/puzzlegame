@@ -7,6 +7,8 @@ public class PlayerSpawn : MonoBehaviour
 
 
     public static string temp = DifficultyLevel.getDifficultLevel();
+    
+    public boolean playerHasReturnedToTitle;
 
     //easy,medium,hard
     private float[] xPosList = new float[3] { 51.2f,75.9f,14.1f};
@@ -26,6 +28,13 @@ public class PlayerSpawn : MonoBehaviour
         if (temp == "Hard")
         {
             transform.position = new Vector3(xPosList[2], yPosList[2], zPosList[2]);
+        }
+    }
+    public void Update()
+    {
+        if (playerHasReturnedToTitle)
+        {
+
         }
     }
 }
