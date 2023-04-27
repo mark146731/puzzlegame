@@ -3,15 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
-    int temp;
     public void Start()
     {
-        temp = SceneManager.GetActiveScene().buildIndex;
+
     }
 
     public void RestartGame ()
     {
-        SceneManager.LoadScene(temp);
+        int curr = CaveManBuildIndex.getBuildIndex();
+        SceneManager.LoadScene(curr);
     }
 
   public void ReturnMenu ()
