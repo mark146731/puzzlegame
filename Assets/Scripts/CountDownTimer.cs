@@ -13,13 +13,15 @@ public class CountDownTimer : MonoBehaviour
     float currentTime = 0f;
     public bool playerStarted = false;
     float startingTime;
-    private static string temp = DifficultyLevel.getDifficultLevel();
+
+    public static string temp;
     
     [SerializeField] TMP_Text countdownText;
 
     void Start()
     {
-        if(temp == "Hard")
+        temp = DifficultyLevel.getDifficultLevel();
+        if (temp == "Hard")
         {
             startingTime = 30f;
             playerStarted = true;

@@ -31,6 +31,10 @@ public class DifficultyLevel : MonoBehaviour
     {
         difficulty = "Hard";
     }
+    public void setDifficultyLevelNull()
+    {
+        difficulty= "null";
+    }
     public static string getDifficultLevel()
     {
         return difficulty;
