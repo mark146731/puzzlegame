@@ -28,7 +28,7 @@ public class FinishLevel : MonoBehaviour
     {
         if(count == 3)
         {
-            LoadNextScene();
+            SceneManager.LoadScene("WinScren");
         }
     }
     private void LoadNextScene()

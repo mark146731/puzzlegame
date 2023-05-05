@@ -20,7 +20,7 @@ public class Hints : MonoBehaviour
     private int counter = 0;
 
     public ArrayList  buttonPressNum;
-    private string[] hints = { "Look for a rock in the hut and place where there is light", "Look for a magic lamp near a rock", "Carry a box to victory to win","" };
+    private string[] hints = { "Look for a special rock in a hut ", "Obtain a magic lamp ", "Carry a box to victory to win","" };
 
 
     public float hintDuration = 5f;
