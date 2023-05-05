@@ -23,7 +23,6 @@ public class PickUpItem : MonoBehaviour
     public void ResizeCollider(float x)
     {
         float temp = x;
-        // Set the new size of the BoxCollider
         sphereCollider.radius = temp;
     }
     private void Update()
@@ -36,7 +35,7 @@ public class PickUpItem : MonoBehaviour
     }
     private void Drop()
     {
-        myChildObject.parent = null;
+        Rock.transform.parent = null;
         Rock.transform.eulerAngles = new Vector3(Rock.transform.position.x, Rock.transform.position.z, Rock.transform.position.y);
         Rock.GetComponent<Rigidbody>().isKinematic = false;
         Rock.GetComponent<MeshCollider>().enabled = true;

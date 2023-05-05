@@ -41,7 +41,7 @@ public class PickUpCrate : MonoBehaviour
     }
     private void Drop()
     {
-        myChildObject.parent = null;
+        Stick.transform.parent = null;
         Stick.transform.eulerAngles = new Vector3(Stick.transform.position.x, Stick.transform.position.z, Stick.transform.position.y);
         Stick.GetComponent<Rigidbody>().isKinematic = false;
         Stick.GetComponent<MeshCollider>().enabled = true;

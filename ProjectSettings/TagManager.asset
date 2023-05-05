@@ -19,11 +19,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Object
   - 
   - 
   - 
@@ -51,4 +51,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 3371933007
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 4258069703
     locked: 0

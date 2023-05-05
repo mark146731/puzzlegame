@@ -6,21 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
-    public List<string> tagsList = new List<string> { "RockKey", "LampKey", "CrateKey" };
-        
-    public GameObject objectPrefab;
     
-    void Start()
+    TheClipBoard clipBoard = new TheClipBoard();
+
+    public GameObject prefabToInstantiate;
+
+    public List<GameObject> gameObjects = new List<GameObject>(3);
+    //element 0 is Solution1Holder
+    //element 1 is Solution2Holder
+    //element 2 is Solution3Holder
+    private string[] tags = { "RockKey", "LampKey", "CrateKey" };
+    //steps to success
+    //
+    private void Start()
+    {
+      
+    }
+    public void Update()
     {
         
-        for (int i = 0; i < tagsList.Count; i++)
-        {
-            string randomTag = tagsList[Random.Range(0, tagsList.Count)];
-            //int index = tagsList.FindIndex(a => a.Contains(randomTag));
-            //tagsList.RemoveAt(index);
-            GameObject newObject = Instantiate(objectPrefab, transform.position, Quaternion.identity);
-            newObject.tag = randomTag;
-        }
     }
+
 }
 

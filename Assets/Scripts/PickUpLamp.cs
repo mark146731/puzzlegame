@@ -36,7 +36,7 @@ public class PickUpLamp : MonoBehaviour
     }
     private void Drop()
     {
-        myChildObject.parent = null;
+        Lamp.transform.parent = null;
         Lamp.transform.eulerAngles = new Vector3(Lamp.transform.position.x, Lamp.transform.position.z, Lamp.transform.position.y);
         Lamp.GetComponent<Rigidbody>().isKinematic = false;
         Lamp.GetComponent<MeshCollider>().enabled = true;
