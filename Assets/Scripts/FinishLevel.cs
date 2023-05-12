@@ -14,7 +14,7 @@ public class FinishLevel : MonoBehaviour
         {
             count++;
         }
-        if (other.gameObject.CompareTag(lamp.tag))
+        if (other.gameObject.tag == lamp.tag)
         {
             count++;
         }
@@ -23,12 +23,16 @@ public class FinishLevel : MonoBehaviour
             count++;
         }
     }
+    private void OnCollisionExit(Collision other)
+    {
+        
+    }
 
     private void Update()
     {
         if(count == 3)
         {
-            SceneManager.LoadScene("WinScren");
+            SceneManager.LoadScene("WinScreen");
         }
     }
     private void LoadNextScene()

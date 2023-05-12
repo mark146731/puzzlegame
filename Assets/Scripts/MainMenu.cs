@@ -5,7 +5,11 @@ public class MainMenu : MonoBehaviour
 {
   public void StartGame ()
     {
-        SceneManager.LoadScene("Caveman");
+        SceneManager.LoadScene("Directions");
+    }
+    public void StartCaveMan()
+    {
+        SceneManager.LoadScene("CaveMan");
     }
 
   public void QuitGame()
