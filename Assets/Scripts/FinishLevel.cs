@@ -3,36 +3,55 @@ using UnityEngine.SceneManagement;
 
 public class FinishLevel : MonoBehaviour
 {
-    public GameObject crate;
-    public GameObject lamp;
-    public GameObject rock;
+    public GameObject[] originalObjects;
+    public string[] correspondingTags;
+    private bool[] isColliding;
 
-    public static int count;
-    private void OnCollisionEnter(Collision other)
+    void Start()
     {
-        if (other.gameObject.CompareTag(crate.tag))
-        {
-            count++;
-        }
-        if (other.gameObject.tag == lamp.tag)
-        {
-            count++;
-        }
-        if (other.gameObject.CompareTag(rock.tag))
-        {
-            count++;
-        }
-    }
-    private void OnCollisionExit(Collision other)
-    {
-        
+        isColliding = new bool[originalObjects.Length];
     }
 
-    private void Update()
+    void Update()
     {
-        if(count == 3)
+        // Check each original object against its corresponding tag
+        for (int i = 0; i < originalObjects.Length; i++)
         {
-            SceneManager.LoadScene("WinScreen");
+            GameObject original = originalObjects[i];
+            string tag = correspondingTags[i];
+
+            Collider[] colliders = Physics.OverlapBox(original.transform.position, original.transform.localScale / 2);
+            bool foundMatchingTag = false;
+
+            // Check each collider that's overlapping with the original object's bounds
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag(tag))
+                {
+                    foundMatchingTag = true;
+                    break;
+                }
+            }
+
+            // Set the flag for whether the original object is colliding with its corresponding tag
+            isColliding[i] = foundMatchingTag;
+        }
+
+        // Check if all original objects are colliding with their corresponding tags
+        bool allColliding = true;
+        foreach (bool colliding in isColliding)
+        {
+            if (!colliding)
+            {
+                allColliding = false;
+                break;
+            }
+        }
+
+        // If all original objects are colliding with their corresponding tags, switch scenes
+        if (allColliding)
+        {
+            //LoadNextScene();
         }
     }
     private void LoadNextScene()

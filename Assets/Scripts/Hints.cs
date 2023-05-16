@@ -20,8 +20,8 @@ public class Hints : MonoBehaviour
     private int counter = 0;
 
     public ArrayList  buttonPressNum;
-    private string[] hints = { "Look for a special rock in a hut ", "Obtain a magic lamp ", "Carry a box to victory to win","" };
-
+    private string[] hints = { "Food, Potion, Skull", " Read the book and pay attention to the colors", "Place each object in the barrell that matches its color","" };
+    private string[] hints2 = {};
 
     public float hintDuration = 5f;
 

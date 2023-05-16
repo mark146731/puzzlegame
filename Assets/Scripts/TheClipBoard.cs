@@ -31,8 +31,7 @@ public class TheClipBoard : MonoBehaviour
         {
             promptText.SetActive(true);
             inRange = true;
-        }
-        
+        } 
     }
     void Start()
     {

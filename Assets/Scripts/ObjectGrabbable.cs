@@ -23,22 +23,23 @@ public class ObjectGrabbable : MonoBehaviour
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         string tag = temp1.gameObject.tag;
-        if (tag == "CrateKey")
+        if (tag == "CrateKeyRed")
         {
             tag = "[Red]";
         }
         string tag1 = temp2.gameObject.tag;
         {
-            if (tag1 == "LampKey")
+            if (tag1 == "LampKeyWhite")
             {
                 tag = "[White]";
 
             }
             string tag3 = temp3.gameObject.tag;
-            if (tag3 == "RockKey")
+            if (tag3 == "RockKeyGreen")
             {
                 tag = "[Green]";
             }
+            tag = "Pick something else up";
             text.GetComponent<TMP_Text>().text = tag;
             text.SetActive(true);
             objectRigidbody.useGravity = false;
